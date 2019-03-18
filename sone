@@ -12,20 +12,49 @@
     #region Sonetyper
     public class Sonetyper:AlarmGrenser
     {
-        public int AlwaysOn()
+        public int AlwaysOn(int SoneStatus)
         {
             //Denne sone typen er alltid aktiv
-            int AlarmOmrådeStatus = 1;
-            return AlarmOmrådeStatus;
+            int on = 1;
+            int soneAlarmStatus = SoneStatus;
+            int resultat = 0;
+            int AlarmOmråde = on;
+            if (AlarmOmråde == on)
+            {
+                if (SoneStatus != 0)
+                {
+                    resultat = soneAlarmStatus;
+                }
+            }
+            else
+            {
+                return 0;
+            }
+            return resultat;
         }
-        public int AlwaysOff()
+        public int AlwaysOff(int SoneStatus)
         {
             //Denne sone typen er alltid inaktiv
-            int AlarmOmrådeStatus = 0;
-            return AlarmOmrådeStatus;
+            int on = 0;
+            int soneAlarmStatus = SoneStatus;
+            int resultat = 0;
+            int AlarmOmråde = on;
+            if (AlarmOmråde == on)
+            {
+                if (SoneStatus != 0)
+                {
+                    resultat = soneAlarmStatus;
+                }
+            }
+            else
+            {
+                return 0;
+            }
+            return resultat;
         }
         public int StandardAlarm(int AlarmOmråde, int SoneStatus)
         {
+            //Denne sonetypen følger alarmområdet, slik at hvis alarmområdet er true og sonestatus er ulik fra 0, så vil det generere alarm
             int on = 1;
             int soneAlarmStatus = SoneStatus;
             int resultat = 0;
