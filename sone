@@ -34,12 +34,12 @@
         }
         public int AlwaysOff(int SoneStatus)
         {
-            //Denne sone typen er alltid inaktiv
+            //Denne sone typen er alltid inaktiv, ingen alarm vil genereres 
             int on = 0;
             int soneAlarmStatus = SoneStatus;
             int resultat = 0;
             int AlarmOmråde = on;
-            if (AlarmOmråde == on)
+            if (AlarmOmråde != on)
             {
                 if (SoneStatus != 0)
                 {
@@ -126,7 +126,8 @@
             {
                 Resultat = 0;//Normal
             }
-            return Resultat;
+            
+            return  Resultat ;
         }
 
         public int NO(double Verdi)
