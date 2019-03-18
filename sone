@@ -56,6 +56,7 @@
         {
             //Denne sonetypen følger alarmområdet, slik at hvis alarmområdet er true og sonestatus er ulik fra 0, så vil det generere alarm
             int on = 1;
+            int Sabotasje = 99;
             int soneAlarmStatus = SoneStatus;
             int resultat = 0;
             if (AlarmOmråde == on)
@@ -64,6 +65,10 @@
                 {
                     resultat = soneAlarmStatus;
                 }
+            }
+            else if (SoneStatus == Sabotasje)
+            {
+                resultat = SoneStatus;
             }
             else
             {
