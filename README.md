@@ -1,2 +1,0 @@
-# Alarmsystem-med-Aurduino
-Arbeidskrav
