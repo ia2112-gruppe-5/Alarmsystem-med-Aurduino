@@ -1,0 +1,79 @@
+{
+        public class Sonetyper
+        {
+            public int AlwaysOn(int SoneStatus)
+            {
+                //Denne sone typen er alltid aktiv
+                int on = 1;
+                int Sabotasje = 99;
+                int soneAlarmStatus = SoneStatus;
+                int resultat = 0;
+                int AlarmOmråde = on;
+                if (AlarmOmråde == on)
+                {
+                    if (SoneStatus != 0)
+                    {
+                        resultat = soneAlarmStatus;
+                    }
+                }
+                else if (SoneStatus == Sabotasje)
+                {
+                    resultat = SoneStatus;
+                }
+                else
+                {
+                    return 0;
+                }
+                return resultat;
+            }
+            public int AlwaysOff(int SoneStatus)
+            {
+                //Denne sone typen er alltid inaktiv, ingen alarm vil genereres, med unntak av sabotasje
+                int on = 0;
+                int Sabotasje = 99;
+                int soneAlarmStatus = SoneStatus;
+                int resultat = 0;
+                int AlarmOmråde = on;
+                if (AlarmOmråde != on)
+                {
+                    if (SoneStatus != 0)
+                    {
+                        resultat = soneAlarmStatus;
+                    }
+                }
+                else if (SoneStatus == Sabotasje)
+                {
+                    resultat = SoneStatus;
+                }
+                else
+                {
+                    return 0;
+                }
+                return resultat;
+            }
+            public int StandardAlarm(int AlarmOmråde, int SoneStatus)
+            {
+                //Denne sonetypen følger alarmområdet, slik at hvis alarmområdet er true og sonestatus er ulik fra 0, så vil det generere alarm
+                int on = 1;
+                int Sabotasje = 99;
+                int soneAlarmStatus = SoneStatus;
+                int resultat = 0;
+                if (AlarmOmråde == on)
+                {
+                    if (SoneStatus != 0)
+                    {
+                        resultat = soneAlarmStatus;
+                    }
+                }
+                else if (SoneStatus == Sabotasje)
+                {
+                    resultat = SoneStatus;
+                }
+                else
+                {
+                    return 0;
+                }
+                return resultat;
+            }
+        }
+    }
