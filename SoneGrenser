@@ -1,0 +1,90 @@
+class SoneGrenser
+    {
+        public class AlarmGrenser
+
+        {
+            public int DB3300ohm(double Verdi)
+            //Dette er en vanlig dobbel balansert sone type. 3.3Kohm i normaltilstand, 6.6Kohm i aktiv sone tilstand. 
+            //Over 9Kohm anser vi som sabotasje og under 3Kohm anser vi som kortslutning
+
+            {
+                double Sabotasje = 9000;
+                double Aktiv = 6300;
+                double Normal = 3000;
+                int Resultat;
+                if (Verdi >= Sabotasje)
+                {
+                    Resultat = 99;//Sabotasje
+                }
+                else if (Verdi >= Aktiv)
+                {
+                    Resultat = 1;//Aktiv Sone
+                }
+                else if (Verdi >= Normal)
+                {
+                    Resultat = 0;//Sone normal
+                }
+                else
+                {
+                    Resultat = 98;//kortslutning
+                }
+                return Resultat;
+            }
+            public int EgenDefinertReferanseVerdi(double Verdi, double ReferanseVerdiPluss, double ReferanseVerdiMinus)
+            //Denne sonen kan du definere topp og bunnpunkt. Imellom topp og bunnpunkt er normaltilstand. 
+            //Dobbelt av topp punkt anser vi som en sabotasje, der man må se hva som fører til at sonen har så høy verdi
+            {
+                int Resultat;
+                if (Verdi >= ReferanseVerdiPluss * 2)
+                {
+                    Resultat = 99;//Sabotasje
+                }
+                else if (Verdi >= ReferanseVerdiPluss)
+                {
+                    Resultat = 50;//Høy
+                }
+                else if (Verdi <= ReferanseVerdiMinus)
+                {
+                    Resultat = 40;//Lav
+                }
+                else
+                {
+                    Resultat = 0;//Normal
+                }
+
+                return Resultat;
+            }
+
+            public int NO(double Verdi)
+            {
+                //Denne alarmgrensen defineres som Normaly Open. Det vil si at ved brudd er den normal. Ved lukket krets er den unormal, dvs. aktiv sone.
+                double breakPoint = 50.0;
+                int resultat;
+                if (Verdi >= breakPoint)
+                {
+                    resultat = 0;//Normal
+                }
+                else
+                {
+                    resultat = 1;//Aktiv sone
+                }
+                return resultat;
+            }
+
+            public int NC(double Verdi)
+            {
+                //Denne alarmgrensen fungere motsatt av NO, den er Normaly Closed. Det vil si at ved lukket krets er den normal, og ved brudd er den unormal, dvs aktiv sone
+                double breakPoint = 50.0;
+                int resultat;
+                if (Verdi >= breakPoint)
+                {
+                    resultat = 1;//Aktiv sone
+                }
+                else
+                {
+                    resultat = 0;//Normal
+                }
+                return resultat;
+            }
+        }
+    }
